@@ -9,6 +9,12 @@ class HelloController extends Controller
 {
     public function index(Request $request, Response $response)
     {
+        $url = $request->url();
+        $fullurl = $request->fullUrl();
+        $path = $request->path();
+
+        $status = $response->status();
+
         $html = <<<EOF
             <html>
                 <head>
@@ -21,9 +27,11 @@ class HelloController extends Controller
                 <body>
                     <h1>Request & Response</h1>
                     <h3>Request</h3>
-                    <pre>{$request}</pre>
+                    <pre>{$url}</pre>
+                    <pre>{$fullurl}</pre>
+                    <pre>{$path}</pre>
                     <h3>Response</h3>
-                    <pre>{$response}</pre>
+                    <pre>{$status}</pre>
                 </body>
             </html>
         EOF;
